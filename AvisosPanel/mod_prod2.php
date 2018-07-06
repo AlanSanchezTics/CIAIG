@@ -1,9 +1,15 @@
 <?php 
+Session_start();
 if(isset($_GET["ref"])){
     if($_GET["ref"]=="del"){
         eliminarAviso($_GET["id"],$_GET["tipo"]);
     }elseif ($_GET["ref"]=="resend") {
         reenviarAviso($_GET["id"],$_GET["type"]);
+    }elseif($_GET["ref"] == "mod"){
+        if($_POST["tipoAviso"]=="general"){avisos_generales($_POST["idAviso"],$_POST["titulo"],$_POST["asunto"],$_POST["fechaI"],$_POST["fechaF"], $_SESSION['IDUSER']);}
+        elseif ($_POST["tipoAviso"]=="grupo") {avisos_grupo($_POST["idAviso"],$_POST["titulo"],$_POST["asunto"],$_POST["fechaI"],$_POST["fechaF"], $_SESSION['IDUSER'],$_POST["grupo"]);}
+        elseif($_POST["tipoAviso"]=="nivel"){avisos_nivel($_POST["idAviso"],$_POST["titulo"],$_POST["asunto"],$_POST["fechaI"],$_POST["fechaF"],$_SESSION['IDUSER'],$_POST["nivel"]);}
+        elseif($_POST["tipoAviso"]=="alumno"){avisos_alumno($_POST["idAviso"],$_POST["titulo"],$_POST["asunto"],$_POST["fechaI"],$_POST["fechaF"],$_SESSION['IDUSER'],$_POST["alumno"]);}
     }
 }
 
@@ -113,7 +119,7 @@ function reenviarAviso($idaviso,$tipo){
         echo "</script>";
     }else{
         echo "<script language='javascript'>"; 
-        echo "alert('Aviso Emitido Correctamente:: No hay usuarios para resibir avisos');";
+        echo "alert('Aviso Emitido Correctamente:: No hay usuarios para recibir avisos');";
         echo "window.location.href='index.php';";
         echo "</script>";
     }
@@ -152,5 +158,156 @@ function sendMessage($tokens, $message, $tipo){
     curl_close($ch);
     
     return $response;
+}
+
+function avisos_generales($id,$title,$body,$fechai,$fechaf,$idadmin){
+    include "../conexion.php";
+    $sql = "UPDATE tbl_avisosgenerales SET TITULO_AVISO='{$title}', DESCRIPCION_AVISO='{$body}', FECHA_INICIAL='{$fechai}',	FECHA_FINAL='{$fechaf}', ID_ADMIN=$idadmin WHERE ID_AVISO = $id";
+    if($conexion -> query($sql) == TRUE){
+        if(isset($_POST["notificar"])){
+            $sql = "SELECT TOKEN FROM tbl_usuarios WHERE USUTIPO = 'A' AND EXISTE = 1 AND TOKEN <> '' AND LENGTH(TOKEN) < 50 ";
+            $result = mysqli_query($conexion,$sql);
+            $tokens = array();
+
+            if(mysqli_num_rows($result) > 0 ){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $tokens[] = $row["TOKEN"];
+                }
+                $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' =>$title, 'body' =>$body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
+                $tipo = "Aviso General";
+                $response = sendMessage($tokens, $message, $tipo);
+                $return["allresponses"] = $response;
+                $return = json_encode( $return);
+                
+                print("\n\nJSON received:\n");
+                print($return);
+                print("\n");
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }else{
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente:: No hay usuarios para recibir avisos');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }
+        }else{
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+        }
+    }
+}
+function avisos_nivel($id,$title,$body,$fechai,$fechaf,$idadmin,$nivel){
+    include "../conexion.php";
+    $sql = "UPDATE tbl_avisos_nivel SET TITULO_AVISO='{$title}', DESCRIPCION_AVISO='{$body}', FECHA_INICIAL='{$fechai}',	FECHA_FINAL='{$fechaf}', ID_ADMIN=$idadmin, NIVEL=$nivel WHERE ID_AVISO = $id";
+    if($conexion -> query($sql) == TRUE){
+        if(isset($_POST["notificar"])){
+            $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.NIVEL=$nivel AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND LENGTH(TOKEN) < 50";
+            $result = mysqli_query($conexion,$sql);
+            $tokens = array();
+
+            if(mysqli_num_rows($result) > 0 ){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $tokens[] = $row["TOKEN"];
+                }
+                $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' =>$title, 'body' =>$body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
+                if($nivel == 1){
+                    $tipo = "Aviso para Preescolar";
+                }else{
+                    $tipo = "Aviso para Primaria";
+                }
+                $message_status = sendMessage($tokens, $message, $tipo);
+                echo $message_status;
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }else{
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente:: No hay usuarios para recibir avisos');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }
+        }else{
+            echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+        }
+    }
+}
+function avisos_grupo($id,$title,$body,$fechai,$fechaf,$idadmin,$grado){
+    include "../conexion.php";
+
+    $sql = "UPDATE tbl_avisos_grupo SET TITULO_AVISO='{$title}', DESCRIPCION_AVISO='{$body}', FECHA_INICIAL='{$fechai}', FECHA_FINAL='{$fechaf}', ID_ADMIN=$idadmin, ID_GRUPO=$grado WHERE ID_AVISO = $id";
+    if($conexion -> query($sql) == TRUE){
+        if(isset($_POST["notificar"])){
+            $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos, tbl_asignaciongrupos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND tbl_asignaciongrupos.ID_GRUPO = $grado AND tbl_asignaciongrupos.ID_ALUMNO = tbl_alumnos.ID_ALUMNO AND LENGTH(TOKEN) < 50";
+            $result = mysqli_query($conexion,$sql);
+            $tokens = array();
+
+            if(mysqli_num_rows($result) > 0 ){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $tokens[] = $row["TOKEN"];
+                }
+                $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' =>$title, 'body' =>$body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
+                $tipo = "Aviso para el Grupo";
+                $message_status = sendMessage($tokens, $message, $tipo);
+                echo $message_status;
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }else{
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente:: No hay usuarios para recibir avisos');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }
+        }else{
+            echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+        }
+    }
+}
+function avisos_alumno($id,$title,$body,$fechai,$fechaf,$idadmin,$alumno){
+    include "../conexion.php";
+
+    $sql = "UPDATE tbl_avisos_alumno SET TITULO_AVISO='{$title}', DESCRIPCION_AVISO='{$body}', FECHA_INICIAL='{$fechai}', FECHA_FINAL='{$fechaf}', ID_ADMIN=$idadmin, ID_ALUMNO=$alumno WHERE ID_AVISO = $id";
+    if($conexion -> query($sql) == TRUE){
+        if(isset($_POST["notificar"])){
+            $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.ID_ALUMNO=$alumno AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND LENGTH(TOKEN) < 50";
+            $result = mysqli_query($conexion,$sql);
+            $tokens = array();
+            if(mysqli_num_rows($result) > 0 ){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $tokens[] = $row["TOKEN"];
+                }
+                $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' =>$title, 'body' =>$body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
+                $tipo = "Aviso Personal";
+                $message_status = sendMessage($tokens, $message,$tipo);
+                echo $message_status;
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }else{
+                echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado y Emitido Correctamente:: No hay usuarios para recibir avisos');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+            }
+        }else{
+            echo "<script language='javascript'>"; 
+                echo "alert('Aviso Modificado Correctamente');";
+                echo "window.location.href='index.php';";
+                echo "</script>";
+        }
+    }
 }
 ?>

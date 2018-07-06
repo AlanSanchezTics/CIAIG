@@ -1,6 +1,7 @@
 <?php
     NuevaMateria($_POST["nombreMat"], $_POST["nivel"],$_POST["grado"], $_POST["matTipo"]);
     function NuevaMateria($materia, $nivel, $grado, $mattipo){
+        var_dump($materia, $nivel, $grado, $mattipo);
         include "../conexion.php";
 
         $sql = "SELECT ID_MATERIA FROM tbl_materias WHERE NIVEL = {$nivel} AND NOMBRE_MATERIA = '{$materia}' AND GRADO = {$grado} AND MAT_TIPO = {$mattipo}";

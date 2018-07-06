@@ -7,7 +7,7 @@
 
     $sqlpri = "SELECT tbl_grupos.id_grupo,tbl_grupos.nombre,tbl_grupos.grado,dce.a_paterno,dce.nombre,dci.a_paterno,dci.nombre FROM tbl_grupos
     INNER JOIN tbl_docentes dce on tbl_grupos.id_docente_E=dce.id_docente
-    INNER JOIN tbl_docentes dci on tbl_grupos.id_docente_i=dci.id_docente AND tbl_grupos.existe=1 AND tbl_grupos.nivel=2";
+    INNER JOIN tbl_docentes dci on tbl_grupos.id_docente_i=dci.id_docente AND tbl_grupos.existe=1 AND tbl_grupos.nivel=2 order by tbl_grupos.grado";
     $tildes = $conexion->query("SET NAMES 'utf8'");
     $resultpree = mysqli_query($conexion,$sqlpree);    
     $resultpri = mysqli_query($conexion,$sqlpri);

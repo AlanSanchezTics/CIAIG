@@ -109,7 +109,12 @@
                                     $sql = "SELECT NIVEL FROM tbl_grupos WHERE ID_GRUPO = {$_GET['refgrupo']}";
                                     $nivel = mysqli_fetch_array($conexion -> query($sql));
                                     if($nivel[0] == 1){
-                                        $tipo = 3;
+                                        $sql = "SELECT ID_DOCENTE_E FROM tbl_grupos WHERE ID_DOCENTE_E ={$_SESSION['IDUSER']} AND ID_GRUPO = {$_GET['refgrupo']}";
+                                        if(mysqli_num_rows($conexion -> query($sql))>0){
+                                            $tipo = 1;
+                                        }else{
+                                            $tipo = 2;
+                                        }
                                     }else {
                                         $sql = "SELECT ID_DOCENTE_E FROM tbl_grupos WHERE ID_DOCENTE_E ={$_SESSION['IDUSER']} AND ID_GRUPO = {$_GET['refgrupo']}";
                                         if(mysqli_num_rows($conexion -> query($sql))>0){
@@ -169,7 +174,7 @@
             <div class="form-row">
                 <div class="col-3">
                     <label for="fechaI">Inicio de la tarea</label>
-                    <input type="date" name="fechaI" id="fechaI" class="form-control">
+                    <input type="date" name="fechaI" id="fechaI" class="form-control" value="<?php echo date("Y-m-d"); ?>">
                 </div>
                 <div class="col-3">
                     <label for="fechaI">Fecha de entrega</label>

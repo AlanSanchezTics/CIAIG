@@ -34,7 +34,7 @@
                 echo "</script>";
             }else{
                 echo "<script language='javascript'>"; 
-                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para resibir avisos');";
+                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para recibir avisos');";
                 echo "window.location.href='index.php';";
                 echo "</script>";
             }
@@ -66,7 +66,7 @@
                 echo "</script>";
             }else{
                 echo "<script language='javascript'>"; 
-                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para resibir avisos');";
+                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para recibir avisos');";
                 echo "window.location.href='index.php';";
                 echo "</script>";
             }
@@ -95,7 +95,7 @@
                 echo "</script>";
             }else{
                 echo "<script language='javascript'>"; 
-                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para resibir avisos');";
+                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para recibir avisos');";
                 echo "window.location.href='index.php';";
                 echo "</script>";
             }
@@ -122,7 +122,7 @@
                 echo "</script>";
             }else{
                 echo "<script language='javascript'>"; 
-                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para resibir avisos');";
+                echo "alert('Aviso Emitido Correctamente:: No hay usuarios para recibir avisos');";
                 echo "window.location.href='index.php';";
                 echo "</script>";
             }

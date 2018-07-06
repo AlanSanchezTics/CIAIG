@@ -2,7 +2,7 @@
 <?php
     include "../conexion.php";
     session_start();
-$sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=1 AND MAT_TIPO <> 3 order by GRADO";
+$sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=1 order by GRADO";
     $sqlpri = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=2 order by GRADO";
     $tildes = $conexion->query("SET NAMES 'utf8'");
     $resultpree = mysqli_query($conexion, $sqlPree);

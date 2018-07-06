@@ -128,6 +128,7 @@
                         <option value="0">Seleccione...</option>
                         <option value="1">Español</option>
                         <option value="2">Ingles</option>
+                        <option value="3">Rubro de Formación</option>
                     </select>
                 </div>
 				<div class="col-2">

@@ -51,8 +51,9 @@
         </thead>
         <tbody>
             <?php
+                session_start();
                 include "../../conexion.php";
-                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_materias.NOMBRE_MATERIA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL FROM tbl_tareas, tbl_materias, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND tbl_tareas.ID_MATERIA = tbl_materias.ID_MATERIA AND tbl_tareas.existe = 1";
+                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_materias.NOMBRE_MATERIA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL FROM tbl_tareas, tbl_materias, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND tbl_tareas.ID_MATERIA = tbl_materias.ID_MATERIA AND  tbl_tareas.existe = 1 AND  tbl_tareas.ID_DOCENTE = ".$_SESSION["IDUSER"];
                 $result = $conexion -> query($sql);
                 while ($reg = mysqli_fetch_array($result)) {
                     echo '  <tr>
