@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="col-2">
-            <a href="#" onclick="window.location.href='moduser.php?idref=<?php echo $_GET['id']; ?>'" class="badge badge-primary" style="margin-top:10pt;">Modificar datos de usuario</a>
+            <a href="#" onclick="window.location.href='modUser.php?idref=<?php echo $_GET['id']; ?>'" class="badge badge-primary" style="margin-top:10pt;">Modificar datos de usuario</a>
         </div>
         <div class="form-row">
                 <div class="col-3">
