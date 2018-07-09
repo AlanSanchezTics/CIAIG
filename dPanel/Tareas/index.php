@@ -59,7 +59,7 @@
                     echo '  <tr>
                                 <th scope="row">';echo $reg[0];echo '</th>
                                 <td>';echo $reg[1]; echo '</td>
-                                <td id = "contenido" data-toggle="tooltip" data-html="true" title="Tarea publicada el: '.$reg[4].'">'; echo $reg[2];echo '</td>
+                                <td id = "contenido" data-toggle="tooltip" data-html="true" title="Tarea publicada el: '.$reg[4].'">'; echo nl2br($reg[2]);echo '</td>
                                 <td>';echo $reg[3]; echo '</td>
                                 <td>';echo date_format(date_create($reg[5]),"d/M/Y"); echo '</td>
                                 <td>';echo $reg[6]."°".$reg[7];if($reg[8] == 2){echo " Primaria";}else{echo " Preescolar";}echo'</td>

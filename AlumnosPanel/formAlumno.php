@@ -18,10 +18,15 @@
         #message, #messagegrupo{
             display: none;
         }
+        img{
+            border-radius: 5pt;
+        }
+
     </style>
     <script>
         window.onload = function () {
             document.getElementById("foto").onchange = function(e) {
+                document.getElementById("img").style.display="none";
                 let reader = new FileReader();
 
                 reader.readAsDataURL(e.target.files[0]);
@@ -29,8 +34,8 @@
                 reader.onload = function(){
                     let preview = document.getElementById('preview'),
                             image = document.createElement('img');
-                            image.style.width = "45px";
-                            image.style.height = "64px";
+                            image.style.width = "100px";
+                            image.style.height = "142px";
                     image.src = reader.result;
                     
                     preview.innerHTML = '';
@@ -116,6 +121,19 @@
     </div>
     <div style="width: 100%; margin-left: 25%; margin-top: 20pt;">
         <form action="nuevo_prod2.php" method="POST" enctype="multipart/form-data" name="form1" id="formulario" onsubmit="return verify();">
+        <div class="form-row">
+                <div class="col-6" align=center>
+                    <label for="preview">Previsualización</label><br>
+                    <img src="./imagenes_alumnos/defaultUser.png" id="img" width="100px" height="142px">
+                    <div id="preview"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="foto">Fotografia</label>
+                    <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
+                </div>
+            </div>
             <div class="col-6">
                     <?php 
                         if(isset($_GET['ref'])){
@@ -199,16 +217,6 @@
                 <div class="col-2">
                         <label for="message"> </label>
                         <div class='alert alert-danger' role='alert' id="message" align='center'>Fechas incorrectas!!</div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-3">
-                    <label for="foto">Fotografia</label>
-                    <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
-                </div>
-                <div class="col-3">
-                    <label for="preview">Previsualización</label>
-                    <div id="preview"></div>
                 </div>
             </div>
             <div class="form-row">

@@ -38,8 +38,8 @@ if(isset($_GET["no"])){
                     let preview = document.getElementById('preview'),
                     
                             image = document.createElement('img');
-                            image.style.width = "45px";
-                            image.style.height = "64px";
+                            image.style.width = "100px";
+                            image.style.height = "142px";
                     image.src = reader.result;
                     
                     preview.innerHTML = '';
@@ -126,6 +126,19 @@ if(isset($_GET["no"])){
     <div style="width: 100%; margin-left: 25%; margin-top: 20pt;">
         <form action="modif_prod2.php?ref=mod" method="POST" enctype="multipart/form-data" name="form1" id="formulario" onsubmit="return verify();">
         <input type="hidden" name="idalumnant" id="idalumnant" value="<?php echo $reg[0]?>">
+            <div class="form-row">
+                <div class="col-6" align=center>
+                    <label for="preview">Previsualización</label><br>
+                    <img src="<?php echo $reg[11]?>" id="img" width="100px" height="142px">
+                    <div id="preview"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="foto">Fotografia</label>
+                    <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
+                </div>
+            </div>
             <div class="col-6">
                     <?php 
                         if(isset($_GET['ref'])){
@@ -309,17 +322,6 @@ if(isset($_GET["no"])){
                 <div class="col-2">
                         <label for="message"> </label>
                         <div class='alert alert-danger' role='alert' id="message" align='center'>Fechas incorrectas!!</div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-3">
-                    <label for="foto">Fotografia</label>
-                    <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
-                </div>
-                <div class="col-3">
-                    <label for="preview">Previsualización</label><br>
-                    <img src="<?php echo $reg[11]?>" id="img" width="45px" height="64px">
-                    <div id="preview"></div>
                 </div>
             </div>
             <div class="form-row">

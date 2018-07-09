@@ -17,7 +17,6 @@ if($_SESSION['IDUSER']== NULL){
     <style>
         body { 
             overflow-X:hidden;
-            background-color: rgba(211, 211, 211, 0.185); 
         }
         #title{
             font-family: Arial;
@@ -67,7 +66,6 @@ if($_SESSION['IDUSER']== NULL){
             background-color: gold;
             color: black;
         }
-
     </style>
     <script>
         function cerrar(){

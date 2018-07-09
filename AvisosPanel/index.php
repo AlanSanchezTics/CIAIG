@@ -77,9 +77,9 @@
                             echo '  <tr>
                                         <th scope="row">';echo $reg[0];echo '</th>
                                         <td>';echo $reg[1]; echo '</td>
-                                        <td id = "contenido" data-toggle="tooltip" title="Aviso publicado el: '.$reg[3].'">'; echo $reg[2];echo '</td>
+                                        <td id = "contenido" data-toggle="tooltip" title="Aviso publicado el: '.$reg[3].'">'; echo nl2br($reg[2]);echo '</td>
                                         <td>';echo $reg[5]; echo '</td>
-                                        <td>';echo $reg[4]; echo '</td>
+                                        <td>';echo date_format(date_create($reg[4]),"d/M/Y"); echo '</td>
                                         <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend&type=1"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Reenviar Aviso"><img src="./icons/resend.png" width="16px" heigth="16px"></button></a> <a href="modAviso.php?id='.$reg[0].'&type=1"><button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"  title="Modificar Aviso"><img src="./icons/edit.ico" width="16px" heigth="16px"></button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',1)" data-toggle="tooltip"  title="Eliminar Aviso"><img src="./icons/delete.png" width="16px" heigth="16px"></button></td>
                                     </tr>';
                         }
@@ -106,10 +106,10 @@
                             echo '  <tr>
                                         <th scope="row">'.$reg[0].'</th>
                                         <td>'.$reg[1].'</td>
-                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.$reg[2].'</td>
+                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.nl2br($reg[2]).'</td>
                                         <td>'.$reg[5].'</td>
                                         <td>'; if($reg[6]==1){echo "Preescolar";}else{echo "Primaria";} echo '</td>
-                                        <td>'.$reg[4].'</td>
+                                        <td>'.date_format(date_create($reg[4]),"d/M/Y").'</td>
                                         <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend&type=2"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Reenviar Aviso"><img src="./icons/resend.png" width="16px" heigth="16px"></button></a> <a href="modAviso.php?id='.$reg[0].'&type=2" ><button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"  title="Modificar Aviso"><img src="./icons/edit.ico" width="16px" heigth="16px"></button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',2)" data-toggle="tooltip"  title="Eliminar Aviso"><img src="./icons/delete.png" width="16px" heigth="16px"></button></td>
                                     </tr>';
                         }
@@ -137,10 +137,10 @@
                             echo '  <tr>
                                         <th scope="row">'.$reg[0].'</th>
                                         <td>'.$reg[1].'</td>
-                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.$reg[2].'</td>
+                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.nl2br($reg[2]).'</td>
                                         <td>'.$reg[5].'</td>
                                         <td>'.$reg[6].'°'.$reg[7].' "';if($reg[8]==1){echo "Preescolar";}else{echo "Primaria";} echo '</td>
-                                        <td>'.$reg[4].'</td>
+                                        <td>'.date_format(date_create($reg[4]),"d/M/Y").'</td>
                                         <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend&type=3"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Reenviar Aviso"><img src="./icons/resend.png" width="16px" heigth="16px"></button></a> <a href="modAviso.php?id='.$reg[0].'&type=3" ><button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"  title="Modificar Aviso"><img src="./icons/edit.ico" width="16px" heigth="16px"></button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',3)" data-toggle="tooltip"  title="Eliminar Aviso"><img src="./icons/delete.png" width="16px" heigth="16px"></button></td>
                                     </tr>';
                         }
@@ -168,10 +168,10 @@
                             echo '  <tr>
                                         <th scope="row">'.$reg[0].'</th>
                                         <td>'.$reg[1].'</td>
-                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.$reg[2].'</td>
+                                        <td data-toggle="tooltip"  title="Aviso publicado el: '.$reg[3].'" id = "contenido">'.nl2br($reg[2]).'</td>
                                         <td>'.$reg[5].'</td>
                                         <td>'.$reg[6].' '.$reg[7].'</td>
-                                        <td>'.$reg[4].'</td>
+                                        <td>'.date_format(date_create($reg[4]),"d/M/Y").'</td>
                                         <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend&type=4"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Reenviar Aviso"><img src="./icons/resend.png" width="16px" heigth="16px"></button></a> <a href="modAviso.php?id='.$reg[0].'&type=4" ><button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"  title="Modificar Aviso"><img src="./icons/edit.ico" width="16px" heigth="16px"></button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',4)" data-toggle="tooltip"  title="Eliminar Aviso"><img src="./icons/delete.png" width="16px" heigth="16px"></button>   
                                         </td>
                                     </tr>';
