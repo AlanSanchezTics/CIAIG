@@ -73,31 +73,31 @@ if($_SESSION['IDUSER']== NULL){
 
         }
         function padmin() {
-            top.frames['framecontenido'].location='../AdminPanel/index.php';
+            top.frames['framecontenido'].location='./AdminPanel/index.php';
         }
         function pdocs() {
-            top.frames['framecontenido'].location='../DocPanel/index.php';
+            top.frames['framecontenido'].location='./DocPanel/index.php';
         }
         function pprim() {
-            top.frames['framecontenido'].location='../AlumnosPanel/indexP.php';
+            top.frames['framecontenido'].location='./AlumnosPanel/indexP.php';
         }
         function pprees() {
-            top.frames['framecontenido'].location='../AlumnosPanel/indexK.php';
+            top.frames['framecontenido'].location='./AlumnosPanel/indexK.php';
         }
         function pposts() {
-            top.frames['framecontenido'].location='../AvisosPanel/index.php';
+            top.frames['framecontenido'].location='./AvisosPanel/index.php';
         }
         function pgrupos() {
-            top.frames['framecontenido'].location='../GruposPanel/index.php';
+            top.frames['framecontenido'].location='./GruposPanel/index.php';
         }
         function pmaterias() {
-            top.frames['framecontenido'].location='../MateriasPanel/index.php';
+            top.frames['framecontenido'].location='./MateriasPanel/index.php';
         }
         function home() {
             top.frames['framecontenido'].location='../inicio.html';
         }
         function ralumno(){
-            top.frames['framecontenido'].location='../AlumnosPanel/formAlumno.php';
+            top.frames['framecontenido'].location='./AlumnosPanel/formAlumno.php';
         }
     </script>
 </head>
