@@ -224,7 +224,7 @@
                     <button type="submit" id="submit" name="send" class="btn btn-primary btn-lg btn-block" style="border-radius: 5pt; margin-top: 20px;">Registrar Alumno</button>
                 </div>
                 <div class="col-3">
-                    <button id="cancel" name="cancel" class="btn btn-danger btn-lg btn-block" type="button" onclick="window.location.href='../inicio.html'" style="border-radius: 5pt; margin-top: 20px;">Cancelar</button>
+                    <button id="cancel" name="cancel" class="btn btn-danger btn-lg btn-block" type="button" onclick="window.location.href='../../inicio.html'" style="border-radius: 5pt; margin-top: 20px;">Cancelar</button>
                 </div>
             </div>
         </form>
