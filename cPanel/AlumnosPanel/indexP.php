@@ -96,7 +96,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
@@ -143,7 +143,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
@@ -190,7 +190,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
@@ -237,7 +237,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
@@ -284,7 +284,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
@@ -331,7 +331,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'ModAlumno.php?no='.$reg[0]."'".'" class="btn btn-primary btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}', 2";echo ')">Eliminar</button></td>
                             </tr>';
                             }
