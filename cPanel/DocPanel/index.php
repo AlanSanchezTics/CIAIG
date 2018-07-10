@@ -55,7 +55,7 @@
                                     <td>';echo $reg[4];echo '</td>
                                     <td>';echo $reg[5];echo '</td>
                                     <td>';echo $reg[6];echo '</td>
-                                    <td><a href="modDoc.php?no=';echo $reg[0];echo '&id=';echo $reg[7]; echo '"><button type="button" class="btn btn-primary btn-sm">Modificar</button></a></td>
+                                    <td><a href="modDoc.php?no=';echo $reg[0];echo '&id=';echo $reg[7]; echo '"><button type="button" class="btn btn-warning btn-sm">Modificar</button></a></td>
                                     <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}'";echo ')">Eliminar</button></td>
                                 </tr>';
                     }

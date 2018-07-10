@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/animate.min.css">
     <style>
@@ -54,7 +55,7 @@
                                 <td>';echo $reg[4];echo '</td>
                                 <td>';echo $reg[5];echo '</td>
                                 <td>';echo $reg[6];echo '</td>
-                                <td><button type="button" onclick="window.location.href='."'".'modAdmin.php?no='.$reg[0].'&id='.$reg[7]."'".';" class="btn btn-primary btn-sm">Modificar</button></td>
+                                <td><button type="button" onclick="window.location.href='."'".'modAdmin.php?no='.$reg[0].'&id='.$reg[7]."'".';" class="btn btn-warning btn-sm">Modificar</button></td>
                                 <td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0],{$reg[7]},'{$reg[1]}'";echo ')">Eliminar</button></td>
                             </tr>';
                 }

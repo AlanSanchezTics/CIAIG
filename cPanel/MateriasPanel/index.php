@@ -66,7 +66,7 @@ $sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias
                                         <td>'; echo $reg[1]; echo '</td>
                                         <td>'; echo $reg[2]; echo '°</td>
                                         <td>';if($reg[3]==1){echo "Español";}else{echo "Ingles";} echo '</td>
-                                        <td><a href="modMateria.php?no=';echo $reg[0]; echo '"><button type="button" class="btn btn-primary btn-sm">Modificar</button></a>
+                                        <td><a href="modMateria.php?no=';echo $reg[0]; echo '"><button type="button" class="btn btn-warning btn-sm">Modificar</button></a>
                                         <button type="button" class="btn btn-danger btn-sm" onclick = "eliminar('; echo "$reg[0],'{$reg[1]}'";echo ')">Eliminar</button></td>
                                     </tr>';
                         }
@@ -93,7 +93,7 @@ $sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias
                                         <td>'; echo $reg[1]; echo '</td>
                                         <td>'; echo $reg[2]; echo '°</td>
                                         <td>';if($reg[3]==1){echo "Español";}else{echo "Ingles";} echo '</td>
-                                        <td><a href="modMateria.php?no=';echo $reg[0]; echo '"><button type="button" class="btn btn-primary btn-sm">Modificar</button></a>
+                                        <td><a href="modMateria.php?no=';echo $reg[0]; echo '"><button type="button" class="btn btn-warning btn-sm">Modificar</button></a>
                                         <button type="button" class="btn btn-danger btn-sm" onclick = "eliminar('; echo "$reg[0],'{$reg[1]}'";echo ')">Eliminar</button></td>
                                     </tr>';
                         }

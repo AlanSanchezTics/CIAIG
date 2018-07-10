@@ -68,7 +68,7 @@
                                         <td>'; echo $reg[2];echo "°";echo $reg[1];echo '</td>
                                         <td>'; echo $reg[4];echo " ";echo $reg[3];echo '</td>
                                         <td>'; echo $reg[6];echo " ";echo $reg[5];echo '</td>
-                                        <td><a href="modGrupo.php?no=';echo $reg[0];echo '"><button width=20px height=20px type="button" class="btn btn-primary btn-sm">Modificar</button></a>
+                                        <td><a href="modGrupo.php?no=';echo $reg[0];echo '"><button width=20px height=20px type="button" class="btn btn-warning btn-sm">Modificar</button></a>
                                         <button type="button" class="btn btn-danger btn-sm" onclick = "eliminar('; echo "$reg[0],{$reg[2]},'{$reg[1]}'";echo ')">Eliminar</button></td>
                                     </tr>';
                         }
@@ -90,14 +90,14 @@
                 <tbody>
                     <?php 
                         while($reg = mysqli_fetch_array($resultpri)){
-                            echo "  <tr>
-                                        <th>$reg[0]</th>
-                                        <td>$reg[2]°$reg[1]</td>
-                                        <td>$reg[4] $reg[3]</td>
-                                        <td>$reg[6] $reg[5]</td>
-                                        <td><button type='button' class='btn btn-primary btn-sm'>Modificar</button>
-                                        <button type='button' class='btn btn-danger btn-sm'>Eliminar</button></td>
-                                    </tr>";
+                            echo '  <tr>
+                                        <th scope ="row">'; echo $reg[0]; echo '</th>
+                                        <td>'; echo $reg[2];echo "°";echo $reg[1];echo '</td>
+                                        <td>'; echo $reg[4];echo " ";echo $reg[3];echo '</td>
+                                        <td>'; echo $reg[6];echo " ";echo $reg[5];echo '</td>
+                                        <td><a href="modGrupo.php?no=';echo $reg[0];echo '"><button width=20px height=20px type="button" class="btn btn-warning btn-sm">Modificar</button></a>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick = "eliminar('; echo "$reg[0],{$reg[2]},'{$reg[1]}'";echo ')">Eliminar</button></td>
+                                    </tr>';
                         }
                     ?>
                 </tbody>
