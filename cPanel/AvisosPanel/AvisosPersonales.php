@@ -2,7 +2,6 @@
 	$json =file_get_contents("php://input");
 	$obj = json_decode($json,true);
 	$idAlumno = $obj["idAlumno"];
-
 	 include "../../conexion.php";
 	$sql = "SELECT ID_AVISO, TITULO_AVISO, DESCRIPCION_AVISO, FECHA_INICIAL, FECHA_FINAL FROM tbl_avisos_alumno WHERE ID_ALUMNO='{$idAlumno}' AND EXISTE = 1 AND FECHA_FINAL > NOW() ORDER BY ID_AVISO DESC";
 	$result = mysqli_query($conexion,$sql);

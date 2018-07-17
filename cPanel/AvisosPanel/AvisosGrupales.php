@@ -4,7 +4,7 @@
 	$grado = $obj["grado"];
 
 	 include "../../conexion.php";
-	$sql = "SELECT ID_AVISO, TITULO_AVISO, DESCRIPCION_AVISO, FECHA_INICIAL, FECHA_FINAL FROM tbl_avisos_grupo WHERE ID_GRUPO = {$grado} AND EXISTE = 1 AND FECHA_FINAL > NOW() ORDER BY ID_AVISO DESC";
+	$sql = "SELECT ID_AVISO, TITULO_AVISO, DESCRIPCION_AVISO, FECHA_INICIAL, FECHA_FINAL FROM tbl_avisos_grupo WHERE ID_GRUPO = {$grado} AND EXISTE = 1 ORDER BY ID_AVISO DESC";
 	$result = mysqli_query($conexion,$sql);
 	
 	if($sql){
