@@ -99,56 +99,12 @@
             </div>
             <div class="form-row">
                 <div class="col-6">
-                    <label for="materia">Materia</label>
+                    <label for="materia">Tipo de Tarea</label>
                     <select id="materia" name="materia" class="form-control">
                         <option value="0">Seleccione...</option>
-                        <script>
-                            var array_materias = "";
-                            <?php
-                                if(isset($_GET["refgrupo"])){
-                                    $sql = "SELECT NIVEL FROM tbl_grupos WHERE ID_GRUPO = {$_GET['refgrupo']}";
-                                    $nivel = mysqli_fetch_array($conexion -> query($sql));
-                                    if($nivel[0] == 1){
-                                        $sql = "SELECT ID_DOCENTE_E FROM tbl_grupos WHERE ID_DOCENTE_E ={$_SESSION['IDUSER']} AND ID_GRUPO = {$_GET['refgrupo']}";
-                                        if(mysqli_num_rows($conexion -> query($sql))>0){
-                                            $tipo = 1;
-                                        }else{
-                                            $tipo = 2;
-                                        }
-                                    }else {
-                                        $sql = "SELECT ID_DOCENTE_E FROM tbl_grupos WHERE ID_DOCENTE_E ={$_SESSION['IDUSER']} AND ID_GRUPO = {$_GET['refgrupo']}";
-                                        if(mysqli_num_rows($conexion -> query($sql))>0){
-                                            $tipo = 1;
-                                        }else{
-                                            $tipo = 2;
-                                        }
-                                    }
-                                    
-                                    $sql = "SELECT tbl_asignacionmaterias.ID_MATERIA, tbl_materias.NOMBRE_MATERIA FROM tbl_materias, tbl_asignacionmaterias WHERE tbl_asignacionmaterias.ID_MATERIA = tbl_materias.ID_MATERIA AND tbl_asignacionmaterias.ID_GRUPO ={$_GET['refgrupo']}  AND tbl_materias.MAT_TIPO =$tipo AND NIVEL = {$nivel[0]}";
-                                    $result = $conexion -> query($sql);
-                                    while ($row = mysqli_fetch_array($result)){
-                                        $materias[] = $row;
-                                    }
-                                    echo "array_materias =".json_encode($materias, JSON_UNESCAPED_UNICODE).";";
-                                    
-                                }                                 
-                            ?>
-                            var grupo = document.getElementById("grupo");
-                            var materia = document.getElementById("materia");
-                            
-                            if(grupo.value != 0 && array_materias != ""){
-                                while(materia.length > 0){
-                                    materia.remove(materia.length-1);
-                                }
-                                for (let index = 0; index < array_materias.length; index++) {
-                                    var array = array_materias[index];
-                                    var option = document.createElement("option");
-                                    option.value = array[0];
-                                    option.text = array[1];
-                                    materia.add(option,materia[index]);
-                                }
-                            }
-                        </script>
+                        <option value="es">Español</option>
+                        <option value="en">Ingles</option>
+                        <option value="co">Computación</option>
                     </select>
                 </div>
                 <div class="col-2">

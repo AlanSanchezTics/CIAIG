@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/animate.min.css">
     <style>
-        @charset "UTF-8";
         .title{
             text-align: center;
             margin: 15pt 0 15pt 0;
@@ -43,7 +42,7 @@
                 <th scope="col">#</th>
                 <th id="titulo">Titulo</th>
                 <th id="contenido">Contenido</th>
-                <th scope="col">Materia</th>
+                <th scope="col">Tipo de Tarea</th>
                 <th scope="col">Fecha de Entrega</th>
                 <th scope="col">Grupo</th>
                 <th scope="col"><a href="formTareas.php"><button type="button" class="btn btn-success">Subir Tarea</button></a></th>
@@ -53,16 +52,16 @@
             <?php
                 session_start();
                 include "../../conexion.php";
-                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_materias.NOMBRE_MATERIA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL FROM tbl_tareas, tbl_materias, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND tbl_tareas.ID_MATERIA = tbl_materias.ID_MATERIA AND  tbl_tareas.existe = 1 AND  tbl_tareas.ID_DOCENTE = ".$_SESSION["IDUSER"];
+                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL,tbl_tareas.TIPO_TAREA FROM tbl_tareas, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND  tbl_tareas.existe = 1 AND  tbl_tareas.ID_DOCENTE = ".$_SESSION["IDUSER"];
                 $result = $conexion -> query($sql);
                 while ($reg = mysqli_fetch_array($result)) {
                     echo '  <tr>
                                 <th scope="row">';echo $reg[0];echo '</th>
                                 <td>';echo $reg[1]; echo '</td>
-                                <td id = "contenido" data-toggle="tooltip" data-html="true" title="Tarea publicada el: '.$reg[4].'">'; echo nl2br($reg[2]);echo '</td>
-                                <td>';echo $reg[3]; echo '</td>
-                                <td>';echo date_format(date_create($reg[5]),"d/M/Y"); echo '</td>
-                                <td>';echo $reg[6]."°".$reg[7];if($reg[8] == 2){echo " Primaria";}else{echo " Preescolar";}echo'</td>
+                                <td id = "contenido" data-toggle="tooltip" data-html="true" title="Tarea publicada el: '.$reg[3].'">'; echo nl2br($reg[2]);echo '</td>
+                                <td>';switch($reg[8]){case "es": echo "Español"; break; case "en": echo "Ingles"; break; case "co": echo "Computación"; break;} echo '</td>
+                                <td>';echo date_format(date_create($reg[4]),"d/M/Y"); echo '</td>
+                                <td>';echo $reg[5]."°".$reg[6];if($reg[7] == 2){echo " Primaria";}else{echo " Preescolar";}echo'</td>
                                 <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend"><button type="button" class="btn btn-primary btn-sm">Reenviar</button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',1)">Eliminar</button></td>
                                     </tr>';
                 }
