@@ -2,7 +2,7 @@
 <?php
     include "../../conexion.php";
     session_start();
-$sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=1 order by GRADO";
+$sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=1 order by GRADO,MAT_TIPO";
     $sqlpri = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias WHERE EXISTE=1 AND NIVEL=2 order by GRADO";
     $tildes = $conexion->query("SET NAMES 'utf8'");
     $resultpree = mysqli_query($conexion, $sqlPree);
@@ -65,7 +65,7 @@ $sqlPree = "SELECT ID_MATERIA, NOMBRE_MATERIA, GRADO, MAT_TIPO FROM tbl_materias
                                         <th>'; echo $reg[0]; echo '</th>
                                         <td>'; echo $reg[1]; echo '</td>
                                         <td>'; echo $reg[2]; echo '°</td>
-                                        <td>';if($reg[3]==1){echo "Español";}else{echo "Ingles";} echo '</td>
+                                        <td>';if($reg[3]==1){echo "Español";}else if($reg[3]==2){echo "Ingles";}else if($reg[3]==3){echo "Rubro de formación";} echo '</td>
                                         <td><a href="modMateria.php?no=';echo $reg[0]; echo '"><button type="button" class="btn btn-warning btn-sm">Modificar</button></a>
                                         <button type="button" class="btn btn-danger btn-sm" onclick = "eliminar('; echo "$reg[0],'{$reg[1]}'";echo ')">Eliminar</button></td>
                                     </tr>';

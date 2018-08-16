@@ -32,7 +32,7 @@ function nuevoAlumno($no_control,$nombre, $a_paterno, $a_materno,$telefono, $ema
     $usuario = date("Y").$no_control;
     $contraseña=$usuario;
     if($foto["name"]==""){
-        $nombreimagen = "https://www.ciaigandhi.com/AlumnosPanel/imagenes_alumnos/default.png";
+        $nombreimagen = "https://www.ciaigandhi.com/cPanel/AlumnosPanel/imagenes_alumnos/default.png";
     }else{
 		$imagen=$foto['name'];
 		$tipoarchivo=$foto['type'];
