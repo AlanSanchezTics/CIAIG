@@ -105,6 +105,8 @@
                         <option value="es">Español</option>
                         <option value="en">Ingles</option>
                         <option value="co">Computación</option>
+                        <option value="ms">Música</option>
+                        <option value="ef">Deportes</option>
                     </select>
                 </div>
                 <div class="col-2">

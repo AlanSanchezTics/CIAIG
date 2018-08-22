@@ -59,7 +59,7 @@
                                 <th scope="row">';echo $reg[0];echo '</th>
                                 <td>';echo $reg[1]; echo '</td>
                                 <td id = "contenido" data-toggle="tooltip" data-html="true" title="Tarea publicada el: '.$reg[3].'">'; echo nl2br($reg[2]);echo '</td>
-                                <td>';switch($reg[8]){case "es": echo "Español"; break; case "en": echo "Ingles"; break; case "co": echo "Computación"; break;} echo '</td>
+                                <td>';switch($reg[8]){case "es": echo "Español"; break; case "en": echo "Ingles"; break; case "co": echo "Computación"; break; case "ms": echo "Música"; break; case "ef": echo "Deportes"; break;} echo '</td>
                                 <td>';echo date_format(date_create($reg[4]),"d/M/Y"); echo '</td>
                                 <td>';echo $reg[5]."°".$reg[6];if($reg[7] == 2){echo " Primaria";}else{echo " Preescolar";}echo'</td>
                                 <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend"><button type="button" class="btn btn-primary btn-sm">Reenviar</button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',1)">Eliminar</button></td>
