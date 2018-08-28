@@ -79,8 +79,11 @@
                         <?php
                             session_start();
                             include "../../conexion.php";
-            
-                            $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE ID_DOCENTE_E =".$_SESSION['IDUSER']."  OR ID_DOCENTE_I = ".$_SESSION['IDUSER']." AND EXISTE = 1";
+                            if($_SESSION["IDUSER"] >=25 && $_SESSION["IDUSER"] <=27){
+                                $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE EXISTE = 1 order by nivel, grado, nombre";
+                            }else{
+                                $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE ID_DOCENTE_E =".$_SESSION['IDUSER']."  OR ID_DOCENTE_I = ".$_SESSION['IDUSER']." AND EXISTE = 1";
+                            }
                             $result = $conexion -> query($sql);
                             while ($row = mysqli_fetch_array($result)){
                                 if($row[0]==$_GET["refgrupo"]){
