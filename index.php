@@ -1,9 +1,5 @@
 <?php
 session_start();
-if(isset($_SESSION['IDUSER'])){
-    if($_SESSION['IDUSER']!= NULL)
-        header('Location: ./cPanel/');
-}
 ?>
 <html>
 <head>
