@@ -4,7 +4,7 @@
     $grupo = $obj["grupo"];
     $tipo = $obj["tipo"];
 	 include "../../conexion.php";
-    $sql = "SELECT ID_TAREA, TITULO_TAREA, DESCRIPCION_TAREA, FECHA_CREACION, FECHA_ENTREGA, tbl_docentes.NOMBRE, tbl_docentes.A_PATERNO FROM tbl_tareas, tbl_docentes WHERE ID_GRUPO = {$grupo} AND TIPO_TAREA = '{$tipo}' AND tbl_tareas.ID_DOCENTE = tbl_docentes.ID_DOCENTE AND tbl_tareas.FECHA_ENTREGA >= CURRENT_DATE() AND tbl_tareas.EXISTE = 1";
+    $sql = "SELECT ID_TAREA, TITULO_TAREA, DESCRIPCION_TAREA, FECHA_CREACION, FECHA_ENTREGA, tbl_docentes.NOMBRE, tbl_docentes.A_PATERNO FROM tbl_tareas, tbl_docentes WHERE ID_GRUPO = {$grupo} AND TIPO_TAREA = '{$tipo}' AND tbl_tareas.ID_DOCENTE = tbl_docentes.ID_DOCENTE AND (tbl_tareas.FECHA_ENTREGA+0) >= (CURRENT_DATE()-1) AND tbl_tareas.EXISTE = 1";
     $result = mysqli_query($conexion,$sql);
 	
 	if($sql){
