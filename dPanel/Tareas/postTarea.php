@@ -42,7 +42,7 @@
 		$fields = array(
 			'app_id' => "775aebac-196e-43bd-9a15-19903cf07d9d",
 			'include_player_ids' => $tokens,
-			'data' => array("foo" => "bar"),
+			'data' => $message,
 			'contents' => $content,
 			'headings' => $headings
 		);
