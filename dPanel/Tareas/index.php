@@ -52,7 +52,7 @@
             <?php
                 session_start();
                 include "../../conexion.php";
-                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL,tbl_tareas.TIPO_TAREA FROM tbl_tareas, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND  tbl_tareas.existe = 1 AND  tbl_tareas.ID_DOCENTE = ".$_SESSION["IDUSER"];
+                $sql = "SELECT tbl_tareas.ID_TAREA, tbl_tareas.TITULO_TAREA, tbl_tareas.DESCRIPCION_TAREA, tbl_tareas.FECHA_CREACION , tbl_tareas.FECHA_ENTREGA, tbl_grupos.GRADO, tbl_grupos.NOMBRE, tbl_grupos.NIVEL,tbl_tareas.TIPO_TAREA FROM tbl_tareas, tbl_grupos WHERE tbl_tareas.ID_GRUPO = tbl_grupos.ID_GRUPO AND  tbl_tareas.existe = 1 AND  tbl_tareas.ID_DOCENTE = ".$_SESSION["IDUSER"]." ORDER BY tbl_tareas.ID_TAREA DESC";
                 $result = $conexion -> query($sql);
                 while ($reg = mysqli_fetch_array($result)) {
                     echo '  <tr>
@@ -62,7 +62,7 @@
                                 <td>';switch($reg[8]){case "es": echo "Español"; break; case "en": echo "Ingles"; break; case "co": echo "Computación"; break; case "ms": echo "Música"; break; case "ef": echo "Deportes"; break;} echo '</td>
                                 <td>';echo date_format(date_create($reg[4]),"d/M/Y"); echo '</td>
                                 <td>';echo $reg[5]."°".$reg[6];if($reg[7] == 2){echo " Primaria";}else{echo " Preescolar";}echo'</td>
-                                <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend"><button type="button" class="btn btn-primary btn-sm">Reenviar</button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',1)">Eliminar</button></td>
+                                <td><a href="mod_prod2.php?id='.$reg[0].'&ref=resend"><button type="button" class="btn btn-warning btn-sm">Reenviar</button></a> <button type="button" class="btn btn-danger btn-sm" onclick="eliminar(';echo "$reg[0], '{$reg[1]}'";echo ',1)">Eliminar</button></td>
                                     </tr>';
                 }
             ?>
