@@ -25,7 +25,7 @@ function avisos_generales($title, $body, $fechai, $fechaf, $idadmin)
             while ($row = mysqli_fetch_assoc($result)) {
                 $tokens[] = $row["TOKEN"];
             }
-            $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' => $title, 'content' => $body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
+            $message = array('Message' => " La institucion acaba de publicar un aviso, Veelo ahora!!", 'Title' => $title, 'body' => $body, 'FechaI' => $fechai, 'FechaF' => $fechaf);
             $tipo = "Aviso General";
             $response = sendMessage($tokens, $message, $tipo);
             $return["allresponses"] = $response;

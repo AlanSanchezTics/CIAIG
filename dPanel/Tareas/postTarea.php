@@ -4,7 +4,7 @@
     function postTarea($titulo,$contenido,$fechaI,$fechaF,$grupo,$materia)
     {
         include "../../conexion.php";
-        $sql ="INSERT INTO tbl_tareas(titulo_tarea,descripcion_tarea,fecha_creacion,fecha_entrega,id_grupo,tipo_tarea,id_docente,existe) VALUES('{$titulo}','{$contenido}','{$fechaI}','{$fechaF}',$grupo,'{$materia}',".$_SESSION['IDUSER'].",1)";
+        $sql ="INSERT INTO tbl_tareas(titulo_tarea,descripcion_tarea,fecha_creacion,fecha_entrega,id_grupo,tipo_tarea,id_docente,existe) VALUES('{$titulo}','{$contenido}','{$fechaI}','{$fechaF} 13:00:00',$grupo,'{$materia}',".$_SESSION['IDUSER'].",1)";
         if ($conexion->query($sql) === TRUE) 
         {
             $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos, tbl_asignaciongrupos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND tbl_asignaciongrupos.ID_GRUPO = $grupo AND tbl_asignaciongrupos.ID_ALUMNO = tbl_alumnos.ID_ALUMNO AND LENGTH(TOKEN) < 50";
