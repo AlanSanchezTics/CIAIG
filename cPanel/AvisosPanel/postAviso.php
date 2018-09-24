@@ -14,7 +14,7 @@ function avisos_generales($title, $body, $fechai, $fechaf, $idadmin)
 {
     include "../../conexion.php";
 
-    $sql1 = "INSERT INTO tbl_avisosgenerales(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf}',$idadmin,1)";
+    $sql1 = "INSERT INTO tbl_avisosgenerales(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf} 13:00:00',$idadmin,1)";
     if (mysqli_query($conexion, $sql1) == true) {
 
         $sql = "SELECT TOKEN FROM tbl_usuarios WHERE USUTIPO = 'A' AND EXISTE = 1 AND TOKEN <> '' AND LENGTH(TOKEN) < 50 ";
@@ -49,7 +49,7 @@ function avisos_generales($title, $body, $fechai, $fechaf, $idadmin)
 function avisos_nivel($title, $body, $fechai, $fechaf, $idadmin, $nivel)
 {
     include "../../conexion.php";
-    $sql1 = "INSERT INTO tbl_avisos_nivel(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,nivel,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf}',$idadmin,$nivel,1)";
+    $sql1 = "INSERT INTO tbl_avisos_nivel(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,nivel,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf} 13:00:00',$idadmin,$nivel,1)";
     if (mysqli_query($conexion, $sql1) == true) {
         $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.NIVEL=$nivel AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND LENGTH(TOKEN) < 50";
         $result = mysqli_query($conexion, $sql);
@@ -82,7 +82,7 @@ function avisos_nivel($title, $body, $fechai, $fechaf, $idadmin, $nivel)
 function avisos_grupo($title, $body, $fechai, $fechaf, $idadmin, $grado)
 {
     include "../../conexion.php";
-    $sql1 = "INSERT INTO tbl_avisos_grupo(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,id_grupo,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf}',$idadmin,$grado,1)";
+    $sql1 = "INSERT INTO tbl_avisos_grupo(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,id_grupo,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf} 13:00:00',$idadmin,$grado,1)";
     if (mysqli_query($conexion, $sql1) == true) {
         $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos, tbl_asignaciongrupos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND tbl_asignaciongrupos.ID_GRUPO = $grado AND tbl_asignaciongrupos.ID_ALUMNO = tbl_alumnos.ID_ALUMNO AND LENGTH(TOKEN) < 50";
         $result = mysqli_query($conexion, $sql);
@@ -111,7 +111,7 @@ function avisos_grupo($title, $body, $fechai, $fechaf, $idadmin, $grado)
 function avisos_alumno($title, $body, $fechai, $fechaf, $idadmin, $alumno)
 {
     include "../../conexion.php";
-    $sql1 = "INSERT INTO tbl_avisos_alumno(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,id_alumno,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf}',$idadmin,$alumno,1)";
+    $sql1 = "INSERT INTO tbl_avisos_alumno(titulo_aviso,descripcion_aviso,fecha_inicial,fecha_final,id_admin,id_alumno,existe) VALUES('{$title}','{$body}','{$fechai}','{$fechaf} 13:00:00',$idadmin,$alumno,1)";
     if (mysqli_query($conexion, $sql1) == true) {
         $sql = "SELECT TOKEN FROM tbl_usuarios, tbl_alumnos WHERE USUTIPO = 'A' AND tbl_usuarios.EXISTE = 1 AND TOKEN <> '' AND tbl_alumnos.ID_ALUMNO=$alumno AND tbl_alumnos.ID_USUARIO = tbl_usuarios.ID_USUARIO AND LENGTH(TOKEN) < 50";
         $result = mysqli_query($conexion, $sql);

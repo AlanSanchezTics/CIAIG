@@ -3,7 +3,7 @@
 	$obj = json_decode($json,true);
 
 	 include "../../conexion.php";
-	$sql = "SELECT ID_AVISO, TITULO_AVISO, DESCRIPCION_AVISO, FECHA_INICIAL, FECHA_FINAL FROM tbl_avisosgenerales WHERE EXISTE = 1 AND (FECHA_FINAL+0) > (CURRENT_DATE()-1) ORDER BY ID_AVISO DESC";
+	$sql = "SELECT ID_AVISO, TITULO_AVISO, DESCRIPCION_AVISO, FECHA_INICIAL, FECHA_FINAL FROM tbl_avisosgenerales WHERE EXISTE = 1 AND FECHA_FINAL >= CURRENT_TIMESTAMP ORDER BY ID_AVISO DESC";
 	$result = mysqli_query($conexion,$sql);
 	
 	if($sql){
