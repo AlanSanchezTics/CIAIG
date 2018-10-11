@@ -77,21 +77,33 @@
                     <select id="grupo" name="grupo" class="form-control" onchange="checkmat()">
                     <option value="0">Seleccione...</option>
                         <?php
-                            session_start();
-                            include "../../conexion.php";
-                            if($_SESSION["IDUSER"] >=25 && $_SESSION["IDUSER"] <=27){
-                                $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE EXISTE = 1 order by nivel, grado, nombre";
-                            }else{
-                                $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE ID_DOCENTE_E =".$_SESSION['IDUSER']."  OR ID_DOCENTE_I = ".$_SESSION['IDUSER']." AND EXISTE = 1";
-                            }
-                            $result = $conexion -> query($sql);
-                            while ($row = mysqli_fetch_array($result)){
-                                if($row[0]==$_GET["refgrupo"]){
-                                    echo '<option value="'.$row[0].'" selected>'.$row[1]."°".$row[2].' ';if($row[3]==1){echo "Preescolar";}else{echo "Primaria";}echo '</option>';
-                                }else{
-                                    echo '<option value="'.$row[0].'">'.$row[1]."°".$row[2].' ';if($row[3]==1){echo "Preescolar";}else{echo "Primaria";}echo '</option>';
+                        session_start();
+                        include "../../conexion.php";
+                        if ($_SESSION["IDUSER"] >= 25 && $_SESSION["IDUSER"] <= 27) {
+                            $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE EXISTE = 1 order by nivel, grado, nombre";
+                        } else {
+                            $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE ID_DOCENTE_E =" . $_SESSION['IDUSER'] . "  OR ID_DOCENTE_I = " . $_SESSION['IDUSER'] . " AND EXISTE = 1";
+                        }
+                        $result = $conexion->query($sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            if ($row[0] == $_GET["refgrupo"]) {
+                                echo '<option value="' . $row[0] . '" selected>' . $row[1] . "°" . $row[2] . ' ';
+                                if ($row[3] == 1) {
+                                    echo "Preescolar";
+                                } else {
+                                    echo "Primaria";
                                 }
+                                echo '</option>';
+                            } else {
+                                echo '<option value="' . $row[0] . '">' . $row[1] . "°" . $row[2] . ' ';
+                                if ($row[3] == 1) {
+                                    echo "Preescolar";
+                                } else {
+                                    echo "Primaria";
+                                }
+                                echo '</option>';
                             }
+                        }
                         ?>
                     </select>
                 </div>

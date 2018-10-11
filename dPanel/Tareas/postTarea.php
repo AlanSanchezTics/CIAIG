@@ -16,7 +16,7 @@
                     $tokens[] = $row["TOKEN"];
                 }
             }
-            $message = array('Message' => "Tu docente acaba de subir una tarea, rivisala ahora!!", 'Title' =>$titulo, 'body' =>$contenido, 'FechaI' => $fechaI, 'FechaF' => $fechaF);
+            $message = array('Message' => "Tu docente acaba de subir una tarea!!", 'Title' =>$titulo, 'body' =>$contenido, 'FechaI' => $fechaI, 'FechaF' => $fechaF);
                 $response = sendMessage($tokens, $message);
                 $return["allresponses"] = $response;
                 $return = json_encode( $return);
