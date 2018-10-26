@@ -68,6 +68,8 @@
             }
         }
         function verify() {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").innerText="Un momento...";
              tipo = document.getElementById("tipoAviso").value;
              grupo  = document.getElementById("grupo").value;
              nivel = document.getElementById("nivel").value;
@@ -78,6 +80,8 @@
                     document.getElementById("messagetipoaviso").style.display = "block";
                     document.getElementById("messagetipoaviso").innerText ="Seleccione un tipo valido!!";
                     document.getElementById("tipoAviso").focus();
+                    document.getElementById("submit").disabled = false;
+                    document.getElementById("submit").innerText="Publicar Aviso";
                     return false;
             }else{
                 	document.getElementById("messagetipoaviso").style.display = "none";
@@ -86,6 +90,8 @@
             if(grupo == "0" && nivel == "0" && alumno == "0" && tipo != "0" && tipo !="general"){
                 document.getElementById("messagetipo").style.display = "block";
                 document.getElementById("messagetipo").innerText ="Seleccione un dato valido!!";
+                document.getElementById("submit").disabled = false;
+                document.getElementById("submit").innerText="Publicar Aviso";
                 return false;
             }else{
                 document.getElementById("messagetipo").style.display = "none";
@@ -95,6 +101,8 @@
                 document.getElementById("messagetitulo").style.display = "block";
                 document.getElementById("messagetitulo").innerText ="Defina un titulo para el aviso!!";
                 document.getElementById("titulo").focus();
+                document.getElementById("submit").disabled = false;
+                document.getElementById("submit").innerText="Publicar Aviso";
                 return false;
             }
             else{
@@ -106,6 +114,8 @@
             if (fechaE < fechaI || fechaE=="" || fechaI == ""){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("message").focus();
+                document.getElementById("submit").disabled = false;
+                document.getElementById("submit").innerText="Publicar Aviso";
                 return false;
             }
             return true;

@@ -21,12 +21,16 @@
     </style>
     <script>
         function verify() {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").innerText="Un momento...";
             grupo = document.getElementById("grupo").value;
             materia = document.getElementById("materia").value;
             titulo = document.getElementById("titulo").value;
             if(grupo == "0"){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("grupo").focus();
+                document.getElementById("submit").disabled = false;
+            document.getElementById("submit").innerText="Subir Tarea";
                 return false;
             }else{
                 document.getElementById("message").style.display = "none";
@@ -34,6 +38,8 @@
             if(materia == "0"){
                 document.getElementById("messagemat").style.display = "block";
                 document.getElementById("materia").focus();
+                document.getElementById("submit").disabled = false;
+            document.getElementById("submit").innerText="Subir Tarea";
                 return false;
             }else{
                 document.getElementById("messagemat").style.display = "none";
@@ -42,6 +48,8 @@
                 document.getElementById("messagetitulo").style.display = "block";
                 document.getElementById("messagetitulo").innerText ="Defina un titulo para el aviso!!";
                 document.getElementById("titulo").focus();
+                document.getElementById("submit").disabled = false;
+            document.getElementById("submit").innerText="Subir Tarea";
                 return false;
             }
             else{
@@ -53,6 +61,8 @@
             if (fechaE < fechaI || fechaE=="" || fechaI == ""){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("FechaI").focus();
+                document.getElementById("submit").disabled = false;
+            document.getElementById("submit").innerText="Subir Tarea";
                 return false;
             }
             return true;
