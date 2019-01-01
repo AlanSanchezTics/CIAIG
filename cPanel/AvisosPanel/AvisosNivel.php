@@ -1,9 +1,9 @@
 <?php 
-	$json =file_get_contents("php://input");
-	$obj = json_decode($json,true);
 	if(isset($_POST["idAlumno"])){
 		$idAlumno = $_POST["idAlumno"];
 	}else{
+		$json =file_get_contents("php://input");
+		$obj = json_decode($json,true);
 		$idAlumno = $obj["idAlumno"];
 	}
 	 include "../../conexion.php";
