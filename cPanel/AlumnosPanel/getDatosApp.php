@@ -1,9 +1,12 @@
 <?php
-$json =file_get_contents("php://input");
-$obj = json_decode($json,true);
-$arreglo = array();
-$alumno = $obj['idAlumno'];
-
+if(isset($_POST["idAlumno"])){
+	$alumno = $_POST["idAlumno"];
+}else{
+	$json =file_get_contents("php://input");
+	$obj = json_decode($json,true);
+	$arreglo = array();
+	$alumno = $obj['idAlumno'];
+}
 	include "../../conexion.php";
 	
 	$sql = "SELECT NOMBRE, A_PATERNO, A_MATERNO, GRADO, TEL, EMAIL, NIVEL, FECHA_INGRESO, FECHA_EGRESO, IMAGEN FROM tbl_alumnos WHERE ID_ALUMNO='{$alumno}' AND tbl_alumnos.EXISTE= 1";
