@@ -1,15 +1,15 @@
 <?php
+    $json =file_get_contents("php://input");
+    $obj = json_decode($json,true);
+    $arreglo = array();
+    $usuario = $obj["usuario"];
+    $clave = $obj["clave"];
+    $token = $obj["token"];
+    
     if(isset($_POST["usuario"]) && isset($_POST["clave"]) && isset($_POST["token"])){
         $usuario = $_POST["usuario"];
         $clave = $_POST["clave"];
         $token = $_POST["token"];
-    }else{
-        $json =file_get_contents("php://input");
-        $obj = json_decode($json,true);
-        $arreglo = array();
-        $usuario = $obj["usuario"];
-        $clave = $obj["clave"];
-        $token = $obj["token"];
     }
     if($usuario !="" ){
    include 'conexion.php';
