@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +90,6 @@
                     <select id="grupo" name="grupo" class="form-control" onchange="checkmat()">
                     <option value="0">Seleccione...</option>
                         <?php
-                        session_start();
                         include "../../conexion.php";
                         if ($_SESSION["IDUSER"] >= 25 && $_SESSION["IDUSER"] <= 27) {
                             $sql = "SELECT ID_GRUPO, GRADO,NOMBRE, NIVEL FROM tbl_grupos WHERE EXISTE = 1 order by nivel, grado, nombre";

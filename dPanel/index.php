@@ -85,7 +85,6 @@ if($_SESSION['IDUSER']== NULL){
                     <div class="list-group" id="list-tab" role="tablist">
                         <a onclick="home()" class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" onrole="tab" aria-controls="home">Inicio</a>
                         <a class="list-group-item list-group-item-action" id="list-admin-list" data-toggle="list" href="#list-admin" role="tab" aria-controls="admin" onclick="pgrupos()">Panel de Grupos</a>
-                        <a class="list-group-item list-group-item-action" id="list-califs-list" data-toggle="list" href="#list-califs" role="tab" aria-controls="califs" onclick="pcalificaciones()">Panel de Calificaciones</a>
                         <a onclick="ptareas()" class="list-group-item list-group-item-action" id="list-tareas-list" data-toggle="list" href="#list-tareas" role="tab" aria-controls="tareas">Panel de Tareas</a>
                         <a class="list-group-item list-group-item-action" id="list-logout-list" data-toggle="list" href="#list-logout" onclick="cerrar()" role="tab" aria-controls="logout">Cerrar sesión</a>
                     </div>
